@@ -65,16 +65,19 @@ const app = new Vue ({
                 this.activeSlide = 0;
             }
             // console.log(this.activeSlide)
+        },
+
+        stopInterval() {
+            clearInterval(this.setInterval)
         }
     },
 
     mounted() {
+        
         setInterval( () => {
             this.nextImage();
-        }, 3000);
+        }, 1000);
 
-        const stopInterval = ( () => {
-            clearInterval(setInterval)
-        });
+        
     }
 })

@@ -34,12 +34,13 @@
 
                     <div @click="nextImage()"
                     @mouseover="stopInterval()"
+                    @mouseleave="setInterval()"
                     class="next"></div>
 
                     <div 
                     v-for="(slide, index) in slides"
                     class="thumb" 
-                    > 
+                    :class="index === activeSlide ? 'active' : ''"> 
                         <img :src="slide.image" :alt="slide.title"/>
 
                     </div>
