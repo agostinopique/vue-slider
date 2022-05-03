@@ -47,7 +47,9 @@ const app = new Vue ({
             }
         ],
 
-        activeSlide: 0
+        activeSlide: 0,
+
+        slidingFlag : false
     },
 
     methods: {
@@ -67,17 +69,22 @@ const app = new Vue ({
             // console.log(this.activeSlide)
         },
 
-        stopInterval() {
-            clearInterval(this.setInterval)
+        startAndStop(){
+            return this.slidingFlag = !this.slidingFlag
+        }, 
+
+        timingSlider() {
+            setInterval(() => {
+                if(this.slidingFlag === false){
+                    this.nextImage();
+                } else {
+                    clearInterval(setInterval())
+                }
+            }, 3000)
         }
     },
 
     mounted() {
-        
-        setInterval( () => {
-            this.nextImage();
-        }, 1000);
-
-        
+        this.timingSlider();
     }
 })
