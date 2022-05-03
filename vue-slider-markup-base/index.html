@@ -27,11 +27,21 @@
                 </div>
 
                 <div class="thumbs">
-                    <div @click="prevImage(), changeActive()" class="prev"></div>
-                    <div @click="nextImage(), changeActive()" class="next"></div>
 
-                    <div v-for="(slide, index) in slides" :class="{'activeSlide === slide.index' ? 'active' : ''} thumb">
+                    <div @click="prevImage()"
+                    @mouseover="stopInterval()" 
+                    class="prev"></div>
+
+                    <div @click="nextImage()"
+                    @mouseover="stopInterval()"
+                    class="next"></div>
+
+                    <div 
+                    v-for="(slide, index) in slides"
+                    class="thumb" 
+                    > 
                         <img :src="slide.image" :alt="slide.title"/>
+
                     </div>
                 </div>
 
@@ -43,3 +53,5 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+
+<!-- :class="{slides[index] === activeSlide} ? 'active' : ''" -->
