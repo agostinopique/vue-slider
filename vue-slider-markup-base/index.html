@@ -14,8 +14,13 @@
     <div id="app">
 
         <div class="container" >
-            <div class="slider-wrapper" tabindex="0">
+            <div class="slider-wrapper"
+                tabindex="0"
+                @mouseenter="startAndStop()"
+                @mouseleave="startAndStop()"
+            >
 
+                <!-- SLIDE CENTRALE -->
                 <div class="item">
                     <img :src="slides[activeSlide].image" :alt="slides[activeSlide].title" />
                     <div class="text">
@@ -25,10 +30,10 @@
                         </p>
                     </div>
                 </div>
+                <!-- /SLIDE CENTRALE -->
 
-                <div class="thumbs"
-                    @mouseover="startAndStop()"
-                    @mouseleave="startAndStop()">
+                <!-- SLIDE LATERALE -->
+                <div class="thumbs">
 
                     <div @click="prevImage()"
                     class="prev"></div>
@@ -39,13 +44,15 @@
                     <div 
                     v-for="(slide, index) in slides"
                     class="thumb" 
-                    @click="activeSlide = index"
                     :class="index === activeSlide ? 'active' : ''"
+                    @click="activeSlide = index"
                     > 
                         <img :src="slide.image" :alt="slide.title"/>
 
                     </div>
                 </div>
+                <!-- /SLIDE LATERALE -->
+
 
             </div>
         </div>
@@ -56,7 +63,11 @@
 </body>
 </html>
 
-<!-- :class="{slides[index] === activeSlide} ? 'active' : ''" 
-                    @mouseleave="setInterval()"
+<!--
+    :class="{slides[index] === activeSlide} ? 'active' : ''" 
+
+    ALTERNATIVA:
+
+    :class="{'active' : index === activeSlide}"
 
 -->

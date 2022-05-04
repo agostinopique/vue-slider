@@ -55,7 +55,7 @@ const app = new Vue ({
     methods: {
         prevImage(){
             this.activeSlide--;
-            if(this.activeSlide ===  - 1){
+            if(this.activeSlide < 0){
                 this.activeSlide = 4;
             }
             // console.log(this.activeSlide)
@@ -74,11 +74,11 @@ const app = new Vue ({
         }, 
 
         timingSlider() {
-            setInterval(() => {
-                if(this.slidingFlag === false){
+            const slideChange = setInterval( () => {
+                if(!this.slidingFlag){
                     this.nextImage();
                 } else {
-                    clearInterval(setInterval())
+                    clearInterval(slideChange)
                 }
             }, 3000)
         }
